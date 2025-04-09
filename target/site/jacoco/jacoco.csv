@@ -1,9 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Somativa1,com.vinot.somativa1.controller,Library,33,159,9,11,6,33,9,12,1,10
-Somativa1,com.vinot.somativa1.model,User,0,44,0,0,0,17,0,9,0,9
-Somativa1,com.vinot.somativa1.model,InventoryItem,3,78,1,1,1,16,2,8,1,8
-Somativa1,com.vinot.somativa1.model,Book,48,186,8,0,6,46,6,20,2,20
-Somativa1,com.vinot.somativa1.application,Main,343,471,46,19,93,115,37,12,6,3
-Somativa1,com.vinot.somativa1.manager,LibraryFileManager.new TypeReference() {...},0,3,0,0,0,1,0,1,0,1
-Somativa1,com.vinot.somativa1.manager,LibraryFileManager.new TypeReference() {...},0,3,0,0,0,1,0,1,0,1
-Somativa1,com.vinot.somativa1.manager,LibraryFileManager,43,56,2,2,11,16,3,6,1,6

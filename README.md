@@ -9,11 +9,23 @@ Projeto Java completo com suporte a:
 - Testes automatizados com JUnit 5;
 - Geração de documentação JavaDoc;
 - Relatório de cobertura de testes com JaCoCo;
-- Estrutura Maven profissional.
+- Estrutura Maven profissional;
+- ✅ **Implementação de fila e pilha como parte da atividade formativa da PUCPR.**
 
 ---
 
-# 🧩 Fluxo de Desenvolvimento - Projeto PUCPR-OED
+## 📌 Atividade Formativa - PUCPR
+
+Nesta etapa do projeto, foram integradas novas funcionalidades com foco no uso de **estruturas de dados**:
+
+- 📚 **Fila (`Queue`)**: gerenciamento da lista de espera de livros emprestados.
+- 🧠 **Pilha (`Stack`)**: histórico de navegação dos livros visualizados por cada usuário.
+- Menu interativo com opções para adicionar à fila, consultar e visualizar histórico.
+- Mantida a estrutura com `LinkedList<Book>` como base do acervo.
+
+---
+
+## 🧩 Fluxo de Desenvolvimento - Projeto PUCPR-OED
 
 Este documento descreve o processo completo de versionamento, colaboração e esteira de CI/CD com Git e GitHub para o projeto Java **Somativa1 - Sistema de Gerenciamento de Biblioteca Virtual**.
 
@@ -33,7 +45,7 @@ Somativa1/
 │   ├── main/
 │   │   ├── java/com/vinot/somativa1/
 │   │   │   ├── application/     # Classe Main
-│   │   │   ├── controller/      # Biblioteca (Library)
+│   │   │   ├── controller/      # Biblioteca, fila e histórico
 │   │   │   ├── manager/         # Persistência JSON
 │   │   │   └── model/           # Book, User, InventoryItem
 │   │   └── resources/           # books.json, users.json
@@ -57,7 +69,7 @@ mvn clean compile
 
 ### Executar a Aplicação
 ```bash
-java -cp target/Somativa1-1.0-SNAPSHOT.jar com.vinot.somativa1.application.Main
+java -cp target/Somativa1-1.1.1-SNAPSHOT.jar com.vinot.somativa1.application.Main
 ```
 
 ---
@@ -101,7 +113,7 @@ mvn javadoc:jar
 ```
 Saída:
 ```
-target/Somativa1-1.0-SNAPSHOT-javadoc.jar
+target/Somativa1-1.1.1-SNAPSHOT-javadoc.jar
 ```
 
 ---
@@ -208,26 +220,18 @@ target/
 ```
 
 ### `CONTRIBUTING.md`
-```markdown
-# Como Contribuir
-1. Fork
-2. Branch `feature/*`
-3. Commits pequenos e claros
-4. Pull Request para `develop`
-5. Aguardar revisão
-```
+Ver instruções completas no arquivo [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ---
 
 ## ✅ Checklist de Commits
-- [ ] Compila e passa os testes
-- [ ] Testes automatizados se necessário
+- [ ] Código compila e passa os testes
+- [ ] Testes automatizados cobrindo a funcionalidade
 - [ ] Sem arquivos de build no commit (`target/`, `.class`, etc)
-- [ ] Inclui documentação (se aplicável)
+- [ ] Inclui documentação (README, JavaDoc, etc)
 
 ---
 
 ## 📞 Contato
 Vinícius Barbosa
 > Projeto acadêmico da PUCPR - 2025
-

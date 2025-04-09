@@ -3,14 +3,14 @@
   "author" : "George Orwell",
   "year" : 1949,
   "bookHash" : -1712237618,
-  "physicalCopyHashes" : [ 2100203580 ],
-  "digitalCopyHashes" : [ 2100279436 ]
+  "physicalCopyHashes" : [ 388643128 ],
+  "digitalCopyHashes" : [ 388645400 ]
 }, {
   "title" : "O Senhor dos Anéis",
   "author" : "Tolkien",
   "year" : 0,
   "bookHash" : -277978219,
-  "physicalCopyHashes" : [ -682316947 ],
+  "physicalCopyHashes" : [ 1901014301 ],
   "digitalCopyHashes" : [ ]
 }, {
   "title" : "Dom Casmurro",
@@ -18,7 +18,7 @@
   "year" : 1899,
   "bookHash" : 401410465,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ -1096103723 ]
+  "digitalCopyHashes" : [ 1487227681 ]
 }, {
   "title" : "Cem Anos de Solidão",
   "author" : "Gabriel García Márquez",
@@ -31,7 +31,7 @@
   "author" : "Antoine de Saint-Exupéry",
   "year" : 1943,
   "bookHash" : -1711859271,
-  "physicalCopyHashes" : [ 2112009805, 2112010321 ],
+  "physicalCopyHashes" : [ 400375449, 400375977 ],
   "digitalCopyHashes" : [ ]
 }, {
   "title" : "A Revolução dos Bichos",
@@ -45,8 +45,8 @@
   "author" : "Fiódor Dostoiévski",
   "year" : 0,
   "bookHash" : 1683838835,
-  "physicalCopyHashes" : [ 4463563 ],
-  "digitalCopyHashes" : [ 4464019 ]
+  "physicalCopyHashes" : [ -1707164481 ],
+  "digitalCopyHashes" : [ -1707164337 ]
 }, {
   "title" : "O Hobbit",
   "author" : "J.R.R. Tolkien",
@@ -66,6 +66,13 @@
   "author" : "Herman Melville",
   "year" : 1851,
   "bookHash" : -791350763,
-  "physicalCopyHashes" : [ 582996417 ],
+  "physicalCopyHashes" : [ -1128629891 ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "Livro Fila",
+  "author" : "Autor Fila",
+  "year" : 2021,
+  "bookHash" : -1775644591,
+  "physicalCopyHashes" : [ ],
   "digitalCopyHashes" : [ ]
 } ]

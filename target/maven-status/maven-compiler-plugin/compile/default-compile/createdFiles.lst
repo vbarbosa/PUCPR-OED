@@ -1,5 +1,7 @@
 com\vinot\somativa1\controller\Library.class
 com\vinot\somativa1\manager\LibraryFileManager$2.class
+com\vinot\somativa1\controller\BookQueueManager.class
+com\vinot\somativa1\controller\UserHistoryManager.class
 com\vinot\somativa1\model\Book.class
 com\vinot\somativa1\manager\LibraryFileManager$1.class
 com\vinot\somativa1\model\InventoryItem.class

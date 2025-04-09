@@ -5,18 +5,37 @@ import com.vinot.somativa1.model.InventoryItem;
 import com.vinot.somativa1.model.User;
 
 import java.util.*;
+
 /**
- * Classe de controle da biblioteca.
- * Gerencia livros, usuários, inventário e as relações entre livros para recomendação.
+ * Classe principal de controle da biblioteca.
+ * Responsável por gerenciar livros, usuários, inventário,
+ * recomendações, filas de espera e histórico de navegação.
  */
 public class Library {
-    private final List<Book> books = new LinkedList<>();
-    private final Map<String, User> users = new HashMap<>();
-    private final Map<Integer, InventoryItem> inventory = new HashMap<>();
+    private final List<Book> books;
+    private final Map<String, User> users;
+    private final Map<Integer, InventoryItem> inventory;
+
+    // Grafo de recomendações entre livros
+    private final Map<Book, Set<Book>> recommendationGraph;
+
+    // Gerenciadores de fila de espera e histórico de navegação
+    private final BookQueueManager bookQueueManager;
+    private final UserHistoryManager userHistoryManager;
+
+    public Library() {
+        this.books = new LinkedList<>();
+        this.users = new HashMap<>();
+        this.inventory = new HashMap<>();
+        this.recommendationGraph = new HashMap<>();
+        this.bookQueueManager = new BookQueueManager();
+        this.userHistoryManager = new UserHistoryManager();
+    }
 
     /**
      * Adiciona um novo livro à biblioteca.
-     * @param book livro a ser adicionado
+     *
+     * @param book o livro a ser adicionado
      */
     public void addBook(Book book) {
         if (book != null) {
@@ -31,15 +50,14 @@ public class Library {
     }
 
     /**
-     * Remove um livro com base no hash identificador.
-     * @param book identificador do livro
+     * Remove um livro da biblioteca e ajusta o inventário.
+     *
+     * @param book o livro a ser removido
      */
     public void removeBook(Book book) {
         books.remove(book);
         int hash = book.hashCode();
-        if (inventory.containsKey(hash)) {
-            inventory.get(hash).removePhysicalCopy();
-        }
+        inventory.remove(hash);
     }
 
     /**
@@ -49,10 +67,12 @@ public class Library {
         books.forEach(System.out::println);
     }
 
-    public int getTotalBooks() {
-        return books.size();
-    }
-
+    /**
+     * Busca livros cujo título contenha a string informada (case-insensitive).
+     *
+     * @param title termo de busca
+     * @return lista de livros encontrados
+     */
     public List<Book> searchBookByTitle(String title) {
         if (title == null || title.isBlank()) return Collections.emptyList();
         String lower = title.toLowerCase();
@@ -66,8 +86,20 @@ public class Library {
     }
 
     /**
-     * Adiciona um novo usuário à biblioteca.
-     * @param name o usuário a ser adicionado
+     * Retorna o total de livros cadastrados.
+     *
+     * @return quantidade de livros
+     */
+    public int getTotalBooks() {
+        return books.size();
+    }
+
+    /**
+     * Adiciona um novo usuário.
+     *
+     * @param name nome
+     * @param email e-mail
+     * @param userId identificador único
      */
     public void addUser(String name, String email, String userId) {
         if (name != null && email != null && userId != null) {
@@ -76,17 +108,19 @@ public class Library {
     }
 
     /**
-     * Remove um usuário da biblioteca com base no ID.
-     * @param userId identificador do usuário
+     * Remove um usuário da biblioteca.
+     *
+     * @param userId ID do usuário
      */
     public void removeUser(String userId) {
         users.remove(userId);
     }
 
     /**
-     * Retorna um usuário com base no ID, se existir.
-     * @param userId identificador do usuário
-     * @return usuário encontrado ou vazio
+     * Retorna um usuário, se existir.
+     *
+     * @param userId ID do usuário
+     * @return usuário, ou Optional vazio
      */
     public Optional<User> getUser(String userId) {
         return Optional.ofNullable(users.get(userId));
@@ -99,8 +133,29 @@ public class Library {
         users.values().forEach(System.out::println);
     }
 
+    /**
+     * Exibe o inventário atual de livros.
+     */
     public void displayInventory() {
         System.out.println("\n--- Inventário ---");
         inventory.values().forEach(System.out::println);
+    }
+
+    /**
+     * Acesso ao gerenciador de fila de espera.
+     *
+     * @return instância do BookQueueManager
+     */
+    public BookQueueManager getBookQueueManager() {
+        return bookQueueManager;
+    }
+
+    /**
+     * Acesso ao gerenciador de histórico do usuário.
+     *
+     * @return instância do UserHistoryManager
+     */
+    public UserHistoryManager getUserHistoryManager() {
+        return userHistoryManager;
     }
 }
