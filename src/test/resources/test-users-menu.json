@@ -8,5 +8,10 @@
     "name" : "Usuário Teste 2",
     "email" : "teste2@email.com",
     "userId" : "teste2"
+  },
+  "userFila" : {
+    "name" : "UserFila",
+    "email" : "fila@teste.com",
+    "userId" : "userFila"
   }
 }

@@ -25,7 +25,7 @@ Este documento descreve o processo completo de versionamento, colaboração e es
 ---
 
 ## 📚 Contexto Acadêmico
-Projeto desenvolvido como atividade somativa na disciplina de **Programação Orientada a Objetos** da **PUCPR**, com foco em boas práticas de desenvolvimento, testes e documentação.
+Projeto desenvolvido como atividade formativa e somativa na disciplina de **Programação Orientada a Objetos** da **PUCPR**, com foco em boas práticas de desenvolvimento, testes e documentação.
 
 ---
 
@@ -38,7 +38,7 @@ Somativa1/
 │   ├── main/
 │   │   ├── java/com/vinot/somativa1/
 │   │   │   ├── application/     # Classe Main
-│   │   │   ├── controller/      # Biblioteca (Library)
+│   │   │   ├── controller/      # Biblioteca, Fila, Histórico
 │   │   │   ├── manager/         # Persistência JSON
 │   │   │   └── model/           # Book, User, InventoryItem
 │   │   └── resources/           # books.json, users.json
@@ -62,7 +62,7 @@ mvn clean compile
 
 ### Executar a Aplicação
 ```bash
-java -cp target/Somativa1-1.0-SNAPSHOT.jar com.vinot.somativa1.application.Main
+java -cp target/Somativa1-1.1.1-SNAPSHOT.jar com.vinot.somativa1.application.Main
 ```
 
 ---
@@ -89,6 +89,14 @@ mvn verify
 
 ---
 
+## 📘 Documentação JavaDoc
+
+[📘 Ver Documentação JavaDoc (online)](https://vbarbosa.github.io/PUCPR-OED/)
+
+Se preferir, você também pode baixar a documentação em `.jar` ou `.zip` no [GitHub Releases](https://github.com/vbarbosa/PUCPR-OED/releases).
+
+---
+
 ## 📗 Gerar JavaDoc
 
 ### Gerar Documentação HTML
@@ -106,7 +114,7 @@ mvn javadoc:jar
 ```
 Saída:
 ```
-target/Somativa1-1.0-SNAPSHOT-javadoc.jar
+target/Somativa1-1.1.1-SNAPSHOT-javadoc.jar
 ```
 
 ---
@@ -233,6 +241,5 @@ target/
 ---
 
 ## 📞 Contato
-Vinícius Barbosa
+Vinícius Barbosa  
 > Projeto acadêmico da PUCPR - 2025
-

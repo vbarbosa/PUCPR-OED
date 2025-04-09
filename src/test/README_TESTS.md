@@ -1,3 +1,4 @@
+
 # ✅ Testes Automatizados - Biblioteca Virtual (Somativa PUCPR)
 
 Este projeto utiliza **JUnit 5** para testes automatizados, seguindo uma estrutura modular com foco em clareza, cobertura e manutenção.
@@ -100,3 +101,26 @@ target/site/jacoco/index.html
 ---
 
 ### 🧪 Testado com sucesso para a versão `v1.2.0`
+=======
+# ✅ Testes Automatizados — Projeto Somativa1
+
+Este projeto utiliza **JUnit 5** para validar as funcionalidades principais da aplicação de biblioteca virtual.
+
+## 📦 Estrutura dos Testes
+
+| Arquivo Java                   | Objetivo                                                       |
+|-------------------------------|----------------------------------------------------------------|
+| `MainMenuTest.java`           | Testa funcionalidades principais do menu interativo (`Main`)  |
+| `BookQueueTest.java`          | Testa a fila de espera por livro (`opções 16 e 17`)            |
+| `UserHistoryTest.java`        | Testa o histórico de navegação por usuário (`opção 18`)        |
+| `RecommendationGraphTest.java` | Testa o grafo de recomendações (`opções 19 e 20`)             |
+
+---
+
+## ▶️ Executando todos os testes
+
+Use sua IDE (IntelliJ, Eclipse) ou o Maven:
+
+```bash
+./mvnw test
+

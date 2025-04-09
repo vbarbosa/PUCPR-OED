@@ -3,69 +3,87 @@
   "author" : "George Orwell",
   "year" : 1949,
   "bookHash" : -1712237618,
-  "physicalCopyHashes" : [ 2100203580 ],
-  "digitalCopyHashes" : [ 2100279436 ]
+  "physicalCopyHashes" : [ -1443466408 ],
+  "digitalCopyHashes" : [ -1443467792 ],
+  "recommendations" : [ ]
 }, {
   "title" : "O Senhor dos Anéis",
   "author" : "Tolkien",
   "year" : 0,
   "bookHash" : -277978219,
-  "physicalCopyHashes" : [ -682316947 ],
-  "digitalCopyHashes" : [ ]
+  "physicalCopyHashes" : [ 68900117 ],
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 }, {
   "title" : "Dom Casmurro",
   "author" : "Machado de Assis",
   "year" : 1899,
   "bookHash" : 401410465,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ -1096103723 ]
+  "digitalCopyHashes" : [ -344887339 ],
+  "recommendations" : [ ]
 }, {
   "title" : "Cem Anos de Solidão",
   "author" : "Gabriel García Márquez",
   "year" : 0,
   "bookHash" : -1242607487,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ ]
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 }, {
   "title" : "O Pequeno Príncipe",
   "author" : "Antoine de Saint-Exupéry",
   "year" : 1943,
   "bookHash" : -1711859271,
-  "physicalCopyHashes" : [ 2112009805, 2112010321 ],
-  "digitalCopyHashes" : [ ]
+  "physicalCopyHashes" : [ -1431739959, -1431734127 ],
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 }, {
   "title" : "A Revolução dos Bichos",
   "author" : "George Orwell",
   "year" : 1945,
   "bookHash" : 1219580655,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ ]
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 }, {
   "title" : "Crime e Castigo",
   "author" : "Fiódor Dostoiévski",
   "year" : 0,
   "bookHash" : 1683838835,
-  "physicalCopyHashes" : [ 4463563 ],
-  "digitalCopyHashes" : [ 4464019 ]
+  "physicalCopyHashes" : [ 755691875 ],
+  "digitalCopyHashes" : [ 755691375 ],
+  "recommendations" : [ ]
 }, {
   "title" : "O Hobbit",
   "author" : "J.R.R. Tolkien",
   "year" : 1937,
   "bookHash" : -109771201,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ ]
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 }, {
   "title" : "O Apanhador no Campo de Centeio",
   "author" : "J.D. Salinger",
   "year" : 0,
   "bookHash" : -1900846862,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ ]
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 }, {
   "title" : "Moby Dick",
   "author" : "Herman Melville",
   "year" : 1851,
   "bookHash" : -791350763,
-  "physicalCopyHashes" : [ 582996417 ],
-  "digitalCopyHashes" : [ ]
+  "physicalCopyHashes" : [ 1334227001 ],
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
+}, {
+  "title" : "Livro Fila",
+  "author" : "Autor Fila",
+  "year" : 2021,
+  "bookHash" : -1775644591,
+  "physicalCopyHashes" : [ ],
+  "digitalCopyHashes" : [ ],
+  "recommendations" : [ ]
 } ]

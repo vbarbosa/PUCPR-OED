@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
+    <!--
+      Grupo e artefato seguem seu padrão atual.
+      Versão incrementada para 1.1.1-SNAPSHOT como exemplo.
+    -->
     <groupId>com.vinot.somativa1</groupId>
     <artifactId>Somativa1</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
 
+    <!-- Nome e descrição do projeto -->
+    <name>Somativa1 - Biblioteca Virtual</name>
+    <url>https://github.com/vbarbosa/PUCPR-OED</url>
+    <description>Projeto de biblioteca virtual em Java, com fila de espera para livros e histórico de navegação, desenvolvido por Vinicius (codinome vinot) na PUCPR.</description>
 
-    <name>Somativa1</name>
-    <url>http://www.example.com</url>
-
+    <!-- Configurações de compilação -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>23</maven.compiler.release>
@@ -19,6 +27,7 @@
         <maven.compiler.target>23</maven.compiler.target>
     </properties>
 
+    <!-- Repositórios (mantido o Sonatype Snapshots) -->
     <repositories>
         <repository>
             <id>sonatype-snapshots</id>
@@ -32,6 +41,7 @@
         </repository>
     </repositories>
 
+    <!-- Dependências existentes (Jackson, JUnit 5 etc.) -->
     <dependencies>
         <!-- Jackson -->
         <dependency>
@@ -39,8 +49,14 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.0</version>
         </dependency>
-
-        <!-- JUnit 5 -->
+        <!-- JUnit Platform Suite para rodar a @Suite -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JUnit 5 (API, Params, Engine) -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -61,8 +77,10 @@
         </dependency>
     </dependencies>
 
+    <!-- Seção de build com plugins -->
     <build>
         <plugins>
+
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.4.0</version>
@@ -132,10 +150,11 @@
                 </configuration>
             </plugin>
 
+            <!-- Jacoco para relatórios de cobertura de testes -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version> <!-- ✅ versão estável -->
+                <version>0.8.12</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
@@ -153,7 +172,29 @@
                 </executions>
             </plugin>
 
-
         </plugins>
     </build>
+
+    <!-- Informações de controle de versão, desenvolvedores etc. -->
+    <developers>
+        <developer>
+            <!-- O <id> geralmente segue seu usuário do GitHub -->
+            <id>vbarbosa</id>
+            <!-- Nome e codinome conforme solicitado -->
+            <name>Vinicius (codinome: vinot) - PUCPR</name>
+            <!-- Sem e-mail, conforme pedido -->
+        </developer>
+    </developers>
+
+    <scm>
+        <!--
+          O <connection> e o <developerConnection> podem usar o prefixo 'scm:git:'
+          ou apenas a URL do repositório. Aqui uso o padrão https.
+        -->
+        <connection>scm:git:https://github.com/vbarbosa/PUCPR-OED.git</connection>
+        <developerConnection>scm:git:https://github.com/vbarbosa/PUCPR-OED.git</developerConnection>
+        <url>https://github.com/vbarbosa/PUCPR-OED</url>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>
