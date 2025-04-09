@@ -27,10 +27,10 @@ public class BookJsonTest {
 
         assertEquals("Teste 1", b1.getTitle());
         assertEquals("Autor A", b1.getAuthor());
-        assertEquals(2000, b1.getYear());
+        assertEquals(2025, b1.getYear());
 
-        assertEquals("Teste 2", b2.getTitle());
-        assertEquals("Autor B", b2.getAuthor());
-        assertEquals(2022, b2.getYear());
+        assertEquals("1984", b2.getTitle());
+        assertEquals("George Orwell", b2.getAuthor());
+        assertEquals(1949, b2.getYear());
     }
 }
