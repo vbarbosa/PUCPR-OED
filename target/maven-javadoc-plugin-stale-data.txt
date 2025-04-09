@@ -1,0 +1,46 @@
+@options
+-classpath
+'C:/Users/vbarb_ihzzadu/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar;C:/Users/vbarb_ihzzadu/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar;C:/Users/vbarb_ihzzadu/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+23
+-sourcepath
+'C:/Users/vbarb_ihzzadu/IdeaProjects/Somativa1/src/main/java'
+-subpackages
+com.vinot.somativa1
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/vbarb_ihzzadu/IdeaProjects/Somativa1/target/site/apidocs'
+-docencoding
+'UTF-8'
+-Xdoclint:none
+-doctitle
+'Somativa1 - Biblioteca Virtual 1.1.1-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Somativa1 - Biblioteca Virtual 1.1.1-SNAPSHOT API'
+C:\Users\vbarb_ihzzadu\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.0\jackson-databind-2.15.0.jar = 1743561538244
+C:\Users\vbarb_ihzzadu\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.0\jackson-annotations-2.15.0.jar = 1743561538272
+C:\Users\vbarb_ihzzadu\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.0\jackson-core-2.15.0.jar = 1743561538336
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\src\main\java = 1744160007422
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\allclasses-index.html = 1744178201416
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\allpackages-index.html = 1744178201419
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\element-list = 1744178201321
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\help-doc.html = 1744178201449
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\index-all.html = 1744178201442
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\index.html = 1744178201400
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\member-search-index.js = 1744178201424
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\module-search-index.js = 1744178201421
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\overview-summary.html = 1744178201446
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\overview-tree.html = 1744178201397
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\package-search-index.js = 1744178201422
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\search.html = 1744178201444
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\tag-search-index.js = 1744178201425
+C:\Users\vbarb_ihzzadu\IdeaProjects\Somativa1\target\site\apidocs\type-search-index.js = 1744178201423

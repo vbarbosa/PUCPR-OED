@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.vinot.somativa1.application"},{"l":"com.vinot.somativa1.controller"},{"l":"com.vinot.somativa1.manager"},{"l":"com.vinot.somativa1.model"}];updateSearchResults();
