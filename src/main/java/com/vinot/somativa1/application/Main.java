@@ -6,16 +6,13 @@ import com.vinot.somativa1.model.Book;
 import com.vinot.somativa1.model.User;
 
 import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Classe principal que inicia a aplicação da biblioteca virtual.
  * Responsável por carregar os dados salvos e iniciar o menu de interação
  * com o usuário. Inclui recursos para gerenciamento de livros, usuários,
- * fila de espera e histórico de navegação.
+ * fila de espera, histórico de navegação e recomendações.
  */
 public class Main {
 
@@ -56,13 +53,14 @@ public class Main {
      *   <li>Gerenciar usuários (adicionar, remover, atualizar, listar, buscar)</li>
      *   <li>Gerenciar fila de espera de livros</li>
      *   <li>Exibir histórico de navegação de usuários</li>
+     *   <li>Gerenciar recomendações (grafo de livros)</li>
      * </ul>
      *
      * @param args parâmetros de linha de comando (não usados aqui).
      */
     public static void main(String[] args) {
 
-        // Instancia a biblioteca (que internamente possui BookQueueManager e UserHistoryManager)
+        // Instancia a biblioteca (que internamente possui BookQueueManager, UserHistoryManager e o grafo de recomendações)
         Library library = new Library();
 
         // Carrega livros e usuários já salvos em arquivo
@@ -109,10 +107,10 @@ public class Main {
             b10.addPhysicalCopy();
 
             // Salvando após criar o acervo inicial
-            LibraryFileManager.saveBooks(livros);
+            LibraryFileManager.saveBooks(livros, library);
         }
 
-        // Caso não haja usuários de teste, cria dois
+        // Inicializa os usuários de teste, se necessário
         if (library.getUser("teste1").isEmpty() && library.getUser("teste2").isEmpty()) {
             User u1 = new User("Usuário Teste 1", "teste1@email.com", "teste1");
             User u2 = new User("Usuário Teste 2", "teste2@email.com", "teste2");
@@ -146,14 +144,18 @@ public class Main {
             System.out.println("14. Ver hashCode de um livro");
             System.out.println("15. Salvar Tudo");
 
-            // Novas opções para fila de espera e histórico de navegação
+            // Funcionalidades já existentes de fila e histórico
             System.out.println("16. Adicionar usuário à fila de espera de um livro");
             System.out.println("17. Visualizar fila de espera de um livro");
             System.out.println("18. Exibir histórico de livros visualizados por um usuário");
+
+            // NOVAS FUNCIONALIDADES DO GRAFO:
+            System.out.println("19. Exibir recomendações para um livro");
+            System.out.println("20. Adicionar recomendação entre dois livros");
+
             System.out.println("0. Fechar Biblioteca");
             System.out.print("Opção: ");
 
-            // Lê a opção do usuário, tratando caso a entrada seja vazia ou inválida
             String input = scanner.nextLine().trim();
             if (input.isBlank()) {
                 option = -1;
@@ -167,7 +169,6 @@ public class Main {
 
             clearConsole();
 
-            // Menu de operações
             switch (option) {
                 case 1 -> {
                     System.out.print("Título: ");
@@ -180,7 +181,7 @@ public class Main {
                     book.updateBookHash();
                     library.addBook(book);
                     livros.add(book);
-                    LibraryFileManager.saveBooks(livros);
+                    LibraryFileManager.saveBooks(livros, library);
                     System.out.println("Livro adicionado.");
                 }
                 case 2 -> library.displayBooks();
@@ -200,7 +201,7 @@ public class Main {
                         for (int i = 0; i < f; i++) book.addPhysicalCopy();
                         for (int i = 0; i < d; i++) book.addDigitalCopy();
                     }
-                    LibraryFileManager.saveBooks(livros);
+                    LibraryFileManager.saveBooks(livros, library);
                 }
                 case 5 -> {
                     System.out.print("Título: ");
@@ -219,7 +220,7 @@ public class Main {
                             }
                         }
                     }
-                    LibraryFileManager.saveBooks(livros);
+                    LibraryFileManager.saveBooks(livros, library);
                 }
                 case 6 -> library.displayInventory();
                 case 7 -> {
@@ -259,7 +260,7 @@ public class Main {
                         if (!y.isBlank()) book.setYear(Integer.parseInt(y));
                         book.updateBookHash();
                     }
-                    LibraryFileManager.saveBooks(livros);
+                    LibraryFileManager.saveBooks(livros, library);
                 }
                 case 11 -> {
                     System.out.print("ID do usuário: ");
@@ -280,7 +281,7 @@ public class Main {
                     List<Book> toRemove = library.searchBookByTitle(title);
                     toRemove.forEach(library::removeBook);
                     livros.removeAll(toRemove);
-                    LibraryFileManager.saveBooks(livros);
+                    LibraryFileManager.saveBooks(livros, library);
                 }
                 case 13 -> {
                     System.out.print("ID: ");
@@ -296,18 +297,12 @@ public class Main {
                             .forEach(b -> System.out.println("Hash: " + b.getBookHash()));
                 }
                 case 15 -> {
-                    LibraryFileManager.saveBooks(livros);
+                    LibraryFileManager.saveBooks(livros, library);
                     LibraryFileManager.saveUsers(usuarios);
                     System.out.println("Salvando Tudo...");
                 }
-
                 // ======================================
-                // Novas funcionalidades de Fila e Histórico
-                // ======================================
-
-                /**
-                 * 16. Adiciona um usuário à fila de espera de um livro
-                 */
+                // Novas funcionalidades de Fila e Histórico (já implementadas)
                 case 16 -> {
                     System.out.print("ID do usuário: ");
                     String userId = scanner.nextLine();
@@ -324,17 +319,13 @@ public class Main {
                     if (encontrados.isEmpty()) {
                         System.out.println("Livro não encontrado.");
                     } else {
-                        // Usamos o primeiro livro que corresponda ao título
+                        // Usamos o primeiro livro encontrado
                         Book book = encontrados.get(0);
                         int bookHash = book.getBookHash();
                         library.getBookQueueManager().addToWaitlist(bookHash, user);
                         System.out.println("Usuário " + userId + " adicionado à fila de espera do livro '" + book.getTitle() + "'.");
                     }
                 }
-
-                /**
-                 * 17. Exibe a fila de espera de um livro específico
-                 */
                 case 17 -> {
                     System.out.print("Título do livro: ");
                     String title = scanner.nextLine();
@@ -353,10 +344,6 @@ public class Main {
                         }
                     }
                 }
-
-                /**
-                 * 18. Exibe o histórico de livros visualizados por um usuário
-                 */
                 case 18 -> {
                     System.out.print("ID do usuário: ");
                     String userId = scanner.nextLine();
@@ -364,7 +351,6 @@ public class Main {
                     if (maybeUser.isEmpty()) {
                         System.out.println("Usuário não encontrado.");
                     } else {
-                        // Recupera a lista de livros visitados (mais recentes por último)
                         var visitedBooks = library.getUserHistoryManager().getUserHistory(userId);
                         if (visitedBooks.isEmpty()) {
                             System.out.println("Não há histórico para este usuário.");
@@ -375,27 +361,55 @@ public class Main {
                         }
                     }
                 }
-
-                // Encerrar a aplicação
-                case 0 -> {
-                    LibraryFileManager.saveBooks(livros);
-                    LibraryFileManager.saveUsers(usuarios);
-                    System.out.println("Fechando Biblioteca...");
+                // ======================================
+                // NOVAS FUNCIONALIDADES para o Grafo de Recomendações
+                case 19 -> {
+                    System.out.print("Título do livro para ver recomendações: ");
+                    String title = scanner.nextLine();
+                    List<Book> encontrados = library.searchBookByTitle(title);
+                    if (encontrados.isEmpty()) {
+                        System.out.println("Livro não encontrado.");
+                    } else {
+                        Book livro = encontrados.get(0);
+                        Set<Book> recs = library.getRecommendations(livro);
+                        if (recs.isEmpty()) {
+                            System.out.println("Sem recomendações disponíveis.");
+                        } else {
+                            System.out.println("Recomendações:");
+                            recs.forEach(r -> System.out.println(" - " + r.getTitle()));
+                        }
+                    }
                 }
-
-                // Qualquer outro valor cai no default
+                case 20 -> {
+                    System.out.print("Livro base: ");
+                    String base = scanner.nextLine();
+                    System.out.print("Livro recomendado: ");
+                    String rec = scanner.nextLine();
+                    List<Book> baseList = library.searchBookByTitle(base);
+                    List<Book> recList = library.searchBookByTitle(rec);
+                    if (baseList.isEmpty() || recList.isEmpty()) {
+                        System.out.println("Livro(s) não encontrado(s).");
+                    } else {
+                        library.addRecommendation(baseList.get(0), recList.get(0));
+                        LibraryFileManager.saveBooks(livros, library);
+                        System.out.println("Recomendação adicionada.");
+                    }
+                }
+                case 0 -> {
+                    LibraryFileManager.saveBooks(livros, library);
+                    LibraryFileManager.saveUsers(usuarios);
+                    System.out.println("Fechando biblioteca...");
+                }
                 default -> System.out.println("Opção inválida.");
             }
 
-            // Pausa para que o usuário veja o resultado antes de voltar ao menu
             if (option != 0) {
-                System.out.print("\n[Pressione ENTER para continuar...] ");
+                System.out.print("[ENTER] para continuar... ");
                 scanner.nextLine();
             }
 
         } while (option != 0);
 
-        // Fecha o Scanner antes de encerrar
         scanner.close();
     }
 }

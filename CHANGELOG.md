@@ -33,3 +33,34 @@ Este arquivo segue o formato de versionamento semântico ([semver](https://semve
 ### Alterado
 - Versão `pom.xml` para `1.1.1-SNAPSHOT`.
 - README com seção da atividade formativa da PUCPR.
+
+---
+
+## [1.2.0] - 2025-04-09
+
+### ✨ Adicionado
+
+- Nova branch `feature/grafo-recomendacao` com entrega final da atividade somativa.
+- Implementação de **grafo de recomendações entre livros**.
+- Extensão do sistema de navegação com histórico por usuário (padrão Stack).
+- Módulo de **testes automatizados** por recurso:
+    - `RecommendationFeatureTest.java`
+    - `UserHistoryFeatureTest.java`
+    - `WaitlistFeatureTest.java`
+- Criação de **SuiteTest.java** para execução agrupada dos testes.
+- Criação de arquivos JSON separados para cenários de teste:
+    - `test-books-recommendation.json`, `test-users-history.json`, etc.
+- Atualização do `Main.java` para suportar visualização e adição de recomendações.
+- Documentação complementar de testes (`README_TESTS.md`).
+
+### 🛠️ Alterado
+
+- `LibraryFileManager` agora persiste o grafo de recomendações no `books.json`.
+- Ajustes no menu interativo para integrar com o grafo e histórico.
+- Modularização e refatoração de testes (`MainMenuTest` dividido em arquivos menores).
+- Atualização de testes existentes com maior robustez.
+
+### ✅ Corrigido
+
+- Correções na persistência do grafo de recomendações que não estava sendo salva entre execuções.
+- Correções menores em nomes de variáveis e arquivos de teste.

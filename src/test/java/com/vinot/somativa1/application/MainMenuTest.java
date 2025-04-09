@@ -11,9 +11,6 @@ import java.nio.file.Files;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.nio.file.Path;
-import java.util.Objects;
-
 public class MainMenuTest {
 
     private final InputStream originalIn = System.in;
@@ -262,4 +259,35 @@ public class MainMenuTest {
         assertTrue(out.contains("Não há histórico para este usuário") || out.contains("histUser"),
                 "Histórico não exibido corretamente (mensagem de histórico vazio não encontrada).");
     }
+
+    @Test
+    void testBookRecommendationGraphInteraction() {
+        /*
+         * Simula o seguinte fluxo:
+         * 1. Adiciona dois livros
+         * 2. Adiciona recomendação do Livro2 para Livro1
+         * 3. Lista as recomendações de Livro1
+         * 4. Sai
+         */
+        simulateInput(String.join("\n",
+                // Adiciona Livro1
+                "1", "Livro1", "Autor1", "2000", "",
+                // Adiciona Livro2
+                "1", "Livro2", "Autor2", "2001", "",
+                // Adiciona recomendação: Livro2 para Livro1
+                "20", "Livro1", "Livro2", "",
+                // Lista recomendações de Livro1
+                "19", "Livro1", "",
+                // Sai
+                "0"
+        ));
+
+        Main.main(null);
+        String out = output.toString();
+
+        assertTrue(out.contains("Recomendação adicionada"), "Falha ao adicionar recomendação.");
+        assertTrue(out.contains("Recomendações para 'Livro1'") || out.contains("Livro2"),
+                "Falha ao listar recomendações corretamente.");
+    }
+
 }
