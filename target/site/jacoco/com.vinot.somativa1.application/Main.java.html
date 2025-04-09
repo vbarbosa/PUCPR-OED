@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Somativa1</a> &gt; <a href="index.source.html" class="el_package">com.vinot.somativa1.application</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.vinot.somativa1.application;
+
+import com.vinot.somativa1.controller.Library;
+import com.vinot.somativa1.manager.LibraryFileManager;
+import com.vinot.somativa1.model.Book;
+import com.vinot.somativa1.model.User;
+
+import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+
+/**
+ * classe principal que inicia a aplicação da biblioteca virtual.
+ * responsável por carregar os dados salvos e iniciar o menu de interação com o usuário.
+ */
+<span class="nc" id="L19">public class Main {</span>
+    static {
+<span class="fc" id="L21">        File resourceDir = new File(&quot;src/main/resources&quot;);</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if (!resourceDir.exists()) {</span>
+<span class="nc" id="L23">            resourceDir.mkdirs();</span>
+        }
+<span class="fc" id="L25">    }</span>
+
+    private static void clearConsole() {
+        try {
+<span class="fc" id="L29">            String os = System.getProperty(&quot;os.name&quot;).toLowerCase();</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            if (os.contains(&quot;windows&quot;)) {</span>
+<span class="fc" id="L31">                new ProcessBuilder(&quot;cmd&quot;, &quot;/c&quot;, &quot;cls&quot;).inheritIO().start().waitFor();</span>
+            } else {
+<span class="nc" id="L33">                System.out.print(&quot;\033[H\033[2J&quot;);</span>
+<span class="nc" id="L34">                System.out.flush();</span>
+            }
+<span class="nc" id="L36">        } catch (Exception e) {</span>
+            // Fallback para simulação em ambientes que não suportam clear real (como IDEs)
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            for (int i = 0; i &lt; 50; i++) {</span>
+<span class="nc" id="L39">                System.out.println();</span>
+            }
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">    }</span>
+
+
+    public static void main(String[] args) {
+<span class="fc" id="L46">        Library library = new Library();</span>
+
+<span class="fc" id="L48">        LinkedList&lt;Book&gt; livros = LibraryFileManager.loadBooks();</span>
+<span class="fc" id="L49">        Map&lt;String, User&gt; usuarios = LibraryFileManager.loadUsers();</span>
+
+<span class="fc" id="L51">        livros.forEach(book -&gt; {</span>
+<span class="nc" id="L52">            book.updateBookHash();</span>
+<span class="nc" id="L53">            library.addBook(book);</span>
+<span class="nc" id="L54">        });</span>
+<span class="pc" id="L55">        usuarios.values().forEach(u -&gt; library.addUser(u.getName(), u.getEmail(), u.getUserId()));</span>
+
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (library.getTotalBooks() == 0) {</span>
+<span class="fc" id="L58">            Book b1 = new Book(&quot;1984&quot;, &quot;George Orwell&quot;, 1949);</span>
+<span class="fc" id="L59">            Book b2 = new Book(&quot;O Senhor dos Anéis&quot;, &quot;Tolkien&quot;);</span>
+<span class="fc" id="L60">            Book b3 = new Book(&quot;Dom Casmurro&quot;, &quot;Machado de Assis&quot;, 1899);</span>
+<span class="fc" id="L61">            Book b4 = new Book(&quot;Cem Anos de Solidão&quot;, &quot;Gabriel García Márquez&quot;);</span>
+<span class="fc" id="L62">            Book b5 = new Book(&quot;O Pequeno Príncipe&quot;, &quot;Antoine de Saint-Exupéry&quot;, 1943);</span>
+<span class="fc" id="L63">            Book b6 = new Book(&quot;A Revolução dos Bichos&quot;, &quot;George Orwell&quot;, 1945);</span>
+<span class="fc" id="L64">            Book b7 = new Book(&quot;Crime e Castigo&quot;, &quot;Fiódor Dostoiévski&quot;);</span>
+<span class="fc" id="L65">            Book b8 = new Book(&quot;O Hobbit&quot;, &quot;J.R.R. Tolkien&quot;, 1937);</span>
+<span class="fc" id="L66">            Book b9 = new Book(&quot;O Apanhador no Campo de Centeio&quot;, &quot;J.D. Salinger&quot;);</span>
+<span class="fc" id="L67">            Book b10 = new Book(&quot;Moby Dick&quot;, &quot;Herman Melville&quot;, 1851);</span>
+
+<span class="fc" id="L69">            Book[] todos = {b1, b2, b3, b4, b5, b6, b7, b8, b9, b10};</span>
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (Book b : todos) {</span>
+<span class="fc" id="L72">                b.updateBookHash();</span>
+<span class="fc" id="L73">                library.addBook(b);</span>
+<span class="fc" id="L74">                livros.add(b);</span>
+            }
+
+<span class="fc" id="L77">            b1.addPhysicalCopy();</span>
+<span class="fc" id="L78">            b1.addDigitalCopy();</span>
+<span class="fc" id="L79">            b2.addPhysicalCopy();</span>
+<span class="fc" id="L80">            b3.addDigitalCopy();</span>
+<span class="fc" id="L81">            b5.addPhysicalCopy();</span>
+<span class="fc" id="L82">            b5.addPhysicalCopy();</span>
+<span class="fc" id="L83">            b7.addPhysicalCopy();</span>
+<span class="fc" id="L84">            b7.addDigitalCopy();</span>
+<span class="fc" id="L85">            b10.addPhysicalCopy();</span>
+
+<span class="fc" id="L87">            LibraryFileManager.saveBooks(livros);</span>
+        }
+
+<span class="pc bpc" id="L90" title="2 of 4 branches missed.">        if (library.getUser(&quot;teste1&quot;).isEmpty() &amp;&amp; library.getUser(&quot;teste2&quot;).isEmpty()) {</span>
+<span class="fc" id="L91">            User u1 = new User(&quot;Usuário Teste 1&quot;, &quot;teste1@email.com&quot;, &quot;teste1&quot;);</span>
+<span class="fc" id="L92">            User u2 = new User(&quot;Usuário Teste 2&quot;, &quot;teste2@email.com&quot;, &quot;teste2&quot;);</span>
+<span class="fc" id="L93">            library.addUser(u1.getName(), u1.getEmail(), u1.getUserId());</span>
+<span class="fc" id="L94">            library.addUser(u2.getName(), u2.getEmail(), u2.getUserId());</span>
+<span class="fc" id="L95">            usuarios.put(u1.getUserId(), u1);</span>
+<span class="fc" id="L96">            usuarios.put(u2.getUserId(), u2);</span>
+<span class="fc" id="L97">            LibraryFileManager.saveUsers(usuarios);</span>
+        }
+
+<span class="fc" id="L100">        Scanner scanner = new Scanner(System.in);</span>
+        int option;
+
+        do {
+<span class="fc" id="L104">            clearConsole();</span>
+<span class="fc" id="L105">            System.out.println(&quot;\n--- Biblioteca Virtual ---&quot;);</span>
+<span class="fc" id="L106">            System.out.println(&quot;1. Adicionar livro ao acervo&quot;);</span>
+<span class="fc" id="L107">            System.out.println(&quot;2. Listar livros&quot;);</span>
+<span class="fc" id="L108">            System.out.println(&quot;3. Buscar livro por título&quot;);</span>
+<span class="fc" id="L109">            System.out.println(&quot;4. Adicionar cópias de um livro&quot;);</span>
+<span class="fc" id="L110">            System.out.println(&quot;5. Remover cópias de um livro&quot;);</span>
+<span class="fc" id="L111">            System.out.println(&quot;6. Ver inventário&quot;);</span>
+<span class="fc" id="L112">            System.out.println(&quot;7. Adicionar usuário&quot;);</span>
+<span class="fc" id="L113">            System.out.println(&quot;8. Listar usuários&quot;);</span>
+<span class="fc" id="L114">            System.out.println(&quot;9. Buscar usuário por ID&quot;);</span>
+<span class="fc" id="L115">            System.out.println(&quot;10. Atualizar dados de livro&quot;);</span>
+<span class="fc" id="L116">            System.out.println(&quot;11. Atualizar dados de usuário&quot;);</span>
+<span class="fc" id="L117">            System.out.println(&quot;12. Remover livro&quot;);</span>
+<span class="fc" id="L118">            System.out.println(&quot;13. Remover usuário&quot;);</span>
+<span class="fc" id="L119">            System.out.println(&quot;14. Ver hashCode de um livro&quot;);</span>
+<span class="fc" id="L120">            System.out.println(&quot;15. Salvar Tudo&quot;);</span>
+<span class="fc" id="L121">            System.out.println(&quot;0. Fechar Biblioteca&quot;);</span>
+<span class="fc" id="L122">            System.out.print(&quot;Opção: &quot;);</span>
+
+<span class="fc" id="L124">            String input = scanner.nextLine().trim();</span>
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">            if (input.isBlank()) {</span>
+<span class="nc" id="L126">                option = -1; // Força a cair no &quot;default&quot; do switch</span>
+            } else {
+                try {
+<span class="fc" id="L129">                    option = Integer.parseInt(input);</span>
+<span class="nc" id="L130">                } catch (NumberFormatException e) {</span>
+<span class="nc" id="L131">                    option = -1; // Valor inválido cai no default</span>
+<span class="fc" id="L132">                }</span>
+            }
+
+
+<span class="fc" id="L136">            clearConsole();</span>
+
+<span class="pc bpc" id="L138" title="10 of 17 branches missed.">            switch (option) {</span>
+                case 1 -&gt; {
+<span class="fc" id="L140">                    System.out.print(&quot;Título: &quot;);</span>
+<span class="fc" id="L141">                    String title = scanner.nextLine();</span>
+<span class="fc" id="L142">                    System.out.print(&quot;Autor: &quot;);</span>
+<span class="fc" id="L143">                    String author = scanner.nextLine();</span>
+<span class="fc" id="L144">                    System.out.print(&quot;Ano: &quot;);</span>
+<span class="fc" id="L145">                    int year = Integer.parseInt(scanner.nextLine());</span>
+<span class="fc" id="L146">                    Book book = new Book(title, author, year);</span>
+<span class="fc" id="L147">                    book.updateBookHash();</span>
+<span class="fc" id="L148">                    library.addBook(book);</span>
+<span class="fc" id="L149">                    livros.add(book);</span>
+<span class="fc" id="L150">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="fc" id="L151">                    System.out.println(&quot;Livro adicionado.&quot;);</span>
+<span class="fc" id="L152">                }</span>
+<span class="fc" id="L153">                case 2 -&gt; library.displayBooks();</span>
+                case 3 -&gt; {
+<span class="fc" id="L155">                    System.out.print(&quot;Título (ou parte): &quot;);</span>
+<span class="fc" id="L156">                    String search = scanner.nextLine();</span>
+<span class="fc" id="L157">                    library.searchBookByTitle(search).forEach(System.out::println);</span>
+<span class="fc" id="L158">                }</span>
+                case 4 -&gt; {
+<span class="nc" id="L160">                    System.out.print(&quot;Título: &quot;);</span>
+<span class="nc" id="L161">                    String title = scanner.nextLine();</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">                    for (Book book : library.searchBookByTitle(title)) {</span>
+<span class="nc" id="L163">                        System.out.print(&quot;Cópias físicas: &quot;);</span>
+<span class="nc" id="L164">                        int f = Integer.parseInt(scanner.nextLine());</span>
+<span class="nc" id="L165">                        System.out.print(&quot;Digitais: &quot;);</span>
+<span class="nc" id="L166">                        int d = Integer.parseInt(scanner.nextLine());</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">                        for (int i = 0; i &lt; f; i++) book.addPhysicalCopy();</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">                        for (int i = 0; i &lt; d; i++) book.addDigitalCopy();</span>
+<span class="nc" id="L169">                    }</span>
+<span class="nc" id="L170">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="nc" id="L171">                }</span>
+                case 5 -&gt; {
+<span class="nc" id="L173">                    System.out.print(&quot;Título: &quot;);</span>
+<span class="nc" id="L174">                    String title = scanner.nextLine();</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">                    for (Book book : library.searchBookByTitle(title)) {</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">                        if (!book.getPhysicalCopyHashes().isEmpty()) {</span>
+<span class="nc" id="L177">                            System.out.print(&quot;Remover física? (s/n): &quot;);</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">                            if (scanner.nextLine().equalsIgnoreCase(&quot;s&quot;)) {</span>
+<span class="nc" id="L179">                                book.getPhysicalCopyHashes().remove(0);</span>
+                            }
+                        }
+<span class="nc bnc" id="L182" title="All 2 branches missed.">                        if (!book.getDigitalCopyHashes().isEmpty()) {</span>
+<span class="nc" id="L183">                            System.out.print(&quot;Remover digital? (s/n): &quot;);</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">                            if (scanner.nextLine().equalsIgnoreCase(&quot;s&quot;)) {</span>
+<span class="nc" id="L185">                                book.getDigitalCopyHashes().remove(0);</span>
+                            }
+                        }
+<span class="nc" id="L188">                    }</span>
+<span class="nc" id="L189">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="nc" id="L190">                }</span>
+<span class="fc" id="L191">                case 6 -&gt; library.displayInventory();</span>
+                case 7 -&gt; {
+<span class="fc" id="L193">                    System.out.print(&quot;Nome: &quot;);</span>
+<span class="fc" id="L194">                    String name = scanner.nextLine();</span>
+<span class="fc" id="L195">                    System.out.print(&quot;Email: &quot;);</span>
+<span class="fc" id="L196">                    String email = scanner.nextLine();</span>
+<span class="fc" id="L197">                    System.out.print(&quot;ID: &quot;);</span>
+<span class="fc" id="L198">                    String id = scanner.nextLine();</span>
+<span class="fc" id="L199">                    User u = new User(name, email, id);</span>
+<span class="fc" id="L200">                    library.addUser(name, email, id);</span>
+<span class="fc" id="L201">                    usuarios.put(id, u);</span>
+<span class="fc" id="L202">                    LibraryFileManager.saveUsers(usuarios);</span>
+<span class="fc" id="L203">                    System.out.println(&quot;Usuário adicionado com sucesso.&quot;);</span>
+
+<span class="fc" id="L205">                }</span>
+<span class="fc" id="L206">                case 8 -&gt; library.displayUsers();</span>
+                case 9 -&gt; {
+<span class="nc" id="L208">                    System.out.print(&quot;ID: &quot;);</span>
+<span class="nc" id="L209">                    String id = scanner.nextLine();</span>
+<span class="nc" id="L210">                    library.getUser(id).ifPresentOrElse(System.out::println, () -&gt; System.out.println(&quot;Usuário não encontrado.&quot;));</span>
+<span class="nc" id="L211">                }</span>
+                case 10 -&gt; {
+<span class="nc" id="L213">                    System.out.print(&quot;Título do livro: &quot;);</span>
+<span class="nc" id="L214">                    String title = scanner.nextLine();</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">                    for (Book book : library.searchBookByTitle(title)) {</span>
+<span class="nc" id="L216">                        System.out.print(&quot;Novo título (ou Enter): &quot;);</span>
+<span class="nc" id="L217">                        String t = scanner.nextLine();</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                        if (!t.isBlank()) book.setTitle(t);</span>
+<span class="nc" id="L219">                        System.out.print(&quot;Novo autor (ou Enter): &quot;);</span>
+<span class="nc" id="L220">                        String a = scanner.nextLine();</span>
+<span class="nc bnc" id="L221" title="All 2 branches missed.">                        if (!a.isBlank()) book.setAuthor(a);</span>
+<span class="nc" id="L222">                        System.out.print(&quot;Novo ano (ou Enter): &quot;);</span>
+<span class="nc" id="L223">                        String y = scanner.nextLine();</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">                        if (!y.isBlank()) book.setYear(Integer.parseInt(y));</span>
+<span class="nc" id="L225">                        book.updateBookHash();</span>
+<span class="nc" id="L226">                    }</span>
+<span class="nc" id="L227">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="nc" id="L228">                }</span>
+                case 11 -&gt; {
+<span class="nc" id="L230">                    System.out.print(&quot;ID do usuário: &quot;);</span>
+<span class="nc" id="L231">                    String id = scanner.nextLine();</span>
+<span class="nc" id="L232">                    library.getUser(id).ifPresent(user -&gt; {</span>
+<span class="nc" id="L233">                        System.out.print(&quot;Novo nome (ou Enter): &quot;);</span>
+<span class="nc" id="L234">                        String n = scanner.nextLine();</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                        if (!n.isBlank()) user.setName(n);</span>
+<span class="nc" id="L236">                        System.out.print(&quot;Novo email (ou Enter): &quot;);</span>
+<span class="nc" id="L237">                        String e = scanner.nextLine();</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">                        if (!e.isBlank()) user.setEmail(e);</span>
+<span class="nc" id="L239">                    });</span>
+<span class="nc" id="L240">                    LibraryFileManager.saveUsers(usuarios);</span>
+<span class="nc" id="L241">                }</span>
+                case 12 -&gt; {
+<span class="nc" id="L243">                    System.out.print(&quot;Título: &quot;);</span>
+<span class="nc" id="L244">                    String title = scanner.nextLine();</span>
+<span class="nc" id="L245">                    List&lt;Book&gt; toRemove = library.searchBookByTitle(title);</span>
+<span class="nc" id="L246">                    toRemove.forEach(library::removeBook);</span>
+<span class="nc" id="L247">                    livros.removeAll(toRemove);</span>
+<span class="nc" id="L248">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="nc" id="L249">                }</span>
+                case 13 -&gt; {
+<span class="nc" id="L251">                    System.out.print(&quot;ID: &quot;);</span>
+<span class="nc" id="L252">                    String id = scanner.nextLine();</span>
+<span class="nc" id="L253">                    library.removeUser(id);</span>
+<span class="nc" id="L254">                    usuarios.remove(id);</span>
+<span class="nc" id="L255">                    LibraryFileManager.saveUsers(usuarios);</span>
+<span class="nc" id="L256">                }</span>
+                case 14 -&gt; {
+<span class="nc" id="L258">                    System.out.print(&quot;Título: &quot;);</span>
+<span class="nc" id="L259">                    String title = scanner.nextLine();</span>
+<span class="nc" id="L260">                    library.searchBookByTitle(title).forEach(b -&gt; System.out.println(&quot;Hash: &quot; + b.getBookHash()));</span>
+<span class="nc" id="L261">                }</span>
+                case 15 -&gt; {
+<span class="nc" id="L263">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="nc" id="L264">                    LibraryFileManager.saveUsers(usuarios);</span>
+<span class="nc" id="L265">                    System.out.println(&quot;Salvando Tudo...&quot;);</span>
+<span class="nc" id="L266">                }</span>
+                case 0 -&gt; {
+<span class="fc" id="L268">                    LibraryFileManager.saveBooks(livros);</span>
+<span class="fc" id="L269">                    LibraryFileManager.saveUsers(usuarios);</span>
+<span class="fc" id="L270">                    System.out.println(&quot;Fechando Biblioteca...&quot;);</span>
+<span class="fc" id="L271">                }</span>
+<span class="nc" id="L272">                default -&gt; System.out.println(&quot;Opção inválida.&quot;);</span>
+            }
+
+<span class="fc bfc" id="L275" title="All 2 branches covered.">            if (option != 0) {</span>
+<span class="fc" id="L276">                System.out.print(&quot;\n[Pressione ENTER para continuar...] &quot;);</span>
+<span class="fc" id="L277">                scanner.nextLine();</span>
+            }
+
+<span class="fc bfc" id="L280" title="All 2 branches covered.">        } while (option != 0);</span>
+
+<span class="fc" id="L282">        scanner.close();</span>
+<span class="fc" id="L283">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

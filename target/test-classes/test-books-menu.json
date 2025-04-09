@@ -1,0 +1,71 @@
+[ {
+  "title" : "1984",
+  "author" : "George Orwell",
+  "year" : 1949,
+  "bookHash" : -1712237618,
+  "physicalCopyHashes" : [ 2112585685 ],
+  "digitalCopyHashes" : [ 2112579813 ]
+}, {
+  "title" : "O Senhor dos Anéis",
+  "author" : "Tolkien",
+  "year" : 0,
+  "bookHash" : -277978219,
+  "physicalCopyHashes" : [ -670016218 ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "Dom Casmurro",
+  "author" : "Machado de Assis",
+  "year" : 1899,
+  "bookHash" : 401410465,
+  "physicalCopyHashes" : [ ],
+  "digitalCopyHashes" : [ -1083804038 ]
+}, {
+  "title" : "Cem Anos de Solidão",
+  "author" : "Gabriel García Márquez",
+  "year" : 0,
+  "bookHash" : -1242607487,
+  "physicalCopyHashes" : [ ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "O Pequeno Príncipe",
+  "author" : "Antoine de Saint-Exupéry",
+  "year" : 1943,
+  "bookHash" : -1711859271,
+  "physicalCopyHashes" : [ 2124321346, 2124320390 ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "A Revolução dos Bichos",
+  "author" : "George Orwell",
+  "year" : 1945,
+  "bookHash" : 1219580655,
+  "physicalCopyHashes" : [ ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "Crime e Castigo",
+  "author" : "Fiódor Dostoiévski",
+  "year" : 0,
+  "bookHash" : 1683838835,
+  "physicalCopyHashes" : [ 16779756 ],
+  "digitalCopyHashes" : [ 16783052 ]
+}, {
+  "title" : "O Hobbit",
+  "author" : "J.R.R. Tolkien",
+  "year" : 1937,
+  "bookHash" : -109771201,
+  "physicalCopyHashes" : [ ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "O Apanhador no Campo de Centeio",
+  "author" : "J.D. Salinger",
+  "year" : 0,
+  "bookHash" : -1900846862,
+  "physicalCopyHashes" : [ ],
+  "digitalCopyHashes" : [ ]
+}, {
+  "title" : "Moby Dick",
+  "author" : "Herman Melville",
+  "year" : 1851,
+  "bookHash" : -791350763,
+  "physicalCopyHashes" : [ 595315018 ],
+  "digitalCopyHashes" : [ ]
+} ]

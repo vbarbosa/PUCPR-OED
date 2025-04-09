@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Library.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Somativa1</a> &gt; <a href="index.source.html" class="el_package">com.vinot.somativa1.controller</a> &gt; <span class="el_source">Library.java</span></div><h1>Library.java</h1><pre class="source lang-java linenums">package com.vinot.somativa1.controller;
+
+import com.vinot.somativa1.model.Book;
+import com.vinot.somativa1.model.InventoryItem;
+import com.vinot.somativa1.model.User;
+
+import java.util.*;
+/**
+ * Classe de controle da biblioteca.
+ * Gerencia livros, usuários, inventário e as relações entre livros para recomendação.
+ */
+<span class="fc" id="L12">public class Library {</span>
+<span class="fc" id="L13">    private final List&lt;Book&gt; books = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L14">    private final Map&lt;String, User&gt; users = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L15">    private final Map&lt;Integer, InventoryItem&gt; inventory = new HashMap&lt;&gt;();</span>
+
+    /**
+     * Adiciona um novo livro à biblioteca.
+     * @param book livro a ser adicionado
+     */
+    public void addBook(Book book) {
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if (book != null) {</span>
+<span class="fc" id="L23">            books.add(book);</span>
+<span class="fc" id="L24">            int hash = book.hashCode();</span>
+<span class="fc" id="L25">            inventory.putIfAbsent(hash, new InventoryItem(hash));</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">            for (int i = 0; i &lt; book.getPhysicalCopyHashes().size(); i++) {</span>
+<span class="nc" id="L27">                inventory.get(hash).addPhysicalCopy();</span>
+            }
+<span class="fc" id="L29">            inventory.get(hash).setDigitalCopies(book.getDigitalCopyHashes().size());</span>
+        }
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Remove um livro com base no hash identificador.
+     * @param book identificador do livro
+     */
+    public void removeBook(Book book) {
+<span class="nc" id="L38">        books.remove(book);</span>
+<span class="nc" id="L39">        int hash = book.hashCode();</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (inventory.containsKey(hash)) {</span>
+<span class="nc" id="L41">            inventory.get(hash).removePhysicalCopy();</span>
+        }
+<span class="nc" id="L43">    }</span>
+
+    /**
+     * Exibe todos os livros cadastrados.
+     */
+    public void displayBooks() {
+<span class="fc" id="L49">        books.forEach(System.out::println);</span>
+<span class="fc" id="L50">    }</span>
+
+    public int getTotalBooks() {
+<span class="fc" id="L53">        return books.size();</span>
+    }
+
+    public List&lt;Book&gt; searchBookByTitle(String title) {
+<span class="pc bpc" id="L57" title="2 of 4 branches missed.">        if (title == null || title.isBlank()) return Collections.emptyList();</span>
+<span class="fc" id="L58">        String lower = title.toLowerCase();</span>
+<span class="fc" id="L59">        List&lt;Book&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        for (Book book : books) {</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (book.getTitle().toLowerCase().contains(lower)) {</span>
+<span class="fc" id="L62">                result.add(book);</span>
+            }
+<span class="fc" id="L64">        }</span>
+<span class="fc" id="L65">        return result;</span>
+    }
+
+    /**
+     * Adiciona um novo usuário à biblioteca.
+     * @param name o usuário a ser adicionado
+     */
+    public void addUser(String name, String email, String userId) {
+<span class="pc bpc" id="L73" title="3 of 6 branches missed.">        if (name != null &amp;&amp; email != null &amp;&amp; userId != null) {</span>
+<span class="fc" id="L74">            users.put(userId, new User(name, email, userId));</span>
+        }
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * Remove um usuário da biblioteca com base no ID.
+     * @param userId identificador do usuário
+     */
+    public void removeUser(String userId) {
+<span class="fc" id="L83">        users.remove(userId);</span>
+<span class="fc" id="L84">    }</span>
+
+    /**
+     * Retorna um usuário com base no ID, se existir.
+     * @param userId identificador do usuário
+     * @return usuário encontrado ou vazio
+     */
+    public Optional&lt;User&gt; getUser(String userId) {
+<span class="fc" id="L92">        return Optional.ofNullable(users.get(userId));</span>
+    }
+
+    /**
+     * Exibe todos os usuários cadastrados.
+     */
+    public void displayUsers() {
+<span class="fc" id="L99">        users.values().forEach(System.out::println);</span>
+<span class="fc" id="L100">    }</span>
+
+    public void displayInventory() {
+<span class="fc" id="L103">        System.out.println(&quot;\n--- Inventário ---&quot;);</span>
+<span class="fc" id="L104">        inventory.values().forEach(System.out::println);</span>
+<span class="fc" id="L105">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
