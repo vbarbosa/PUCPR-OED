@@ -1,6 +1,7 @@
 # Somativa1 - Sistema de Gerenciamento de Biblioteca Virtual
 
 Projeto Java completo com suporte a:
+
 - Cadastro de livros com acervo (físico e digital);
 - Cadastro e busca de usuários;
 - Persistência em arquivos JSON;
@@ -12,45 +13,49 @@ Projeto Java completo com suporte a:
 
 ---
 
-## 🧱 Estrutura de Diretórios
+# 🧩 Fluxo de Desenvolvimento - Projeto PUCPR-OED
 
+Este documento descreve o processo completo de versionamento, colaboração e esteira de CI/CD com Git e GitHub para o projeto Java **Somativa1 - Sistema de Gerenciamento de Biblioteca Virtual**.
+
+---
+
+## 📚 Contexto Acadêmico
+Projeto desenvolvido como atividade somativa na disciplina de **Programação Orientada a Objetos** da **PUCPR**, com foco em boas práticas de desenvolvimento, testes e documentação.
+
+---
+
+## 🧱 Estrutura de Diretórios
 ```
 Somativa1/
 ├── pom.xml                       # Configuração Maven
-├── target/                      # Diretório de build gerado
-│   └── site/                    # Javadoc e relatórios do JaCoCo
+├── target/                      # Build, relatórios, JavaDoc
 ├── src/
 │   ├── main/
-│   │   ├── java/
-│   │   │   └── com/vinot/somativa1/
-│   │   │       ├── application/   # Classe Main
-│   │   │       ├── controller/    # Biblioteca (Library)
-│   │   │       ├── manager/       # Leitura/Escrita JSON
-│   │   │       └── model/         # Book, User, InventoryItem
-│   │   └── resources/             # Arquivos JSON persistentes
-│   │       ├── books.json
-│   │       └── users.json
+│   │   ├── java/com/vinot/somativa1/
+│   │   │   ├── application/     # Classe Main
+│   │   │   ├── controller/      # Biblioteca (Library)
+│   │   │   ├── manager/         # Persistência JSON
+│   │   │   └── model/           # Book, User, InventoryItem
+│   │   └── resources/           # books.json, users.json
 │   └── test/
-│       ├── java/
-│       │   └── com/vinot/somativa1/
-│       │       └── ... (classes de teste unitário)
-│       └── resources/             # books-test.json, users-test.json
+│       ├── java/com/vinot/somativa1/ # Testes automatizados
+│       └── resources/           # JSONs de teste
 ```
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Como Executar
 
 ### Pré-requisitos
-- Java 23 instalado (ex: Temurin 23)
+- Java 23 (ex: Temurin 23 via SDKMAN ou Scoop)
 - Maven 3.9+
 
-### Compilar o projeto
+### Compilar o Projeto
 ```bash
 mvn clean compile
 ```
 
-### Executar a aplicação (via terminal):
+### Executar a Aplicação
 ```bash
 java -cp target/Somativa1-1.0-SNAPSHOT.jar com.vinot.somativa1.application.Main
 ```
@@ -58,48 +63,42 @@ java -cp target/Somativa1-1.0-SNAPSHOT.jar com.vinot.somativa1.application.Main
 ---
 
 ## ✅ Executar os Testes
-
 ```bash
 mvn test
 ```
 
-- Utiliza JUnit 5
-- Todos os testes estão em `src/test/java`
-- Gera arquivo de cobertura `target/jacoco.exec`
+- Testes com JUnit 5
+- Pastas: `src/test/java` e `src/test/resources`
 
 ---
 
-## 🧪 Ver Cobertura de Testes com JaCoCo
-
+## 🧪 Cobertura de Testes (JaCoCo)
 ```bash
 mvn verify
 ```
 
-Relatório HTML completo:
-```
-target/site/jacoco/index.html
-```
-
-Abra no navegador e veja a porcentagem de cobertura por classe, método e linha.
+- Acessar relatório:
+  ```
+  target/site/jacoco/index.html
+  ```
 
 ---
 
-## 📚 Gerar JavaDoc
+## 📗 Gerar JavaDoc
 
+### Gerar Documentação HTML
 ```bash
 mvn javadoc:javadoc
 ```
-
-Saída:
+Abrir em:
 ```
 target/site/apidocs/index.html
 ```
 
-Para gerar o `.jar` da documentação:
+### Gerar JAR da documentação
 ```bash
 mvn javadoc:jar
 ```
-
 Saída:
 ```
 target/Somativa1-1.0-SNAPSHOT-javadoc.jar
@@ -108,77 +107,127 @@ target/Somativa1-1.0-SNAPSHOT-javadoc.jar
 ---
 
 ## ⚙️ Plugins Maven Utilizados
+- `maven-compiler-plugin`
+- `maven-surefire-plugin`
+- `maven-javadoc-plugin`
+- `jacoco-maven-plugin`
 
-```xml
-<plugins>
-  <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.11.0</version>
-    <configuration>
-      <release>23</release>
-    </configuration>
-  </plugin>
+---
 
-  <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>3.1.2</version>
-  </plugin>
+## 💼 Estrutura de Branches Git
 
-  <plugin>
-    <groupId>org.jacoco</groupId>
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.12</version>
-    <executions>
-      <execution>
-        <id>prepare-agent</id>
-        <goals><goal>prepare-agent</goal></goals>
-      </execution>
-      <execution>
-        <id>report</id>
-        <phase>verify</phase>
-        <goals><goal>report</goal></goals>
-      </execution>
-    </executions>
-  </plugin>
+- `main`: versão estável
+- `develop`: integração
+- `feature/*`: novas funcionalidades
+- `hotfix/*`: correções rápidas
+- `test/*`: testes específicos
 
-  <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-javadoc-plugin</artifactId>
-    <version>3.6.3</version>
-    <executions>
-      <execution>
-        <id>attach-javadocs</id>
-        <phase>package</phase>
-        <goals><goal>jar</goal></goals>
-      </execution>
-    </executions>
-    <configuration>
-      <source>23</source>
-      <show>private</show>
-      <doclint>none</doclint>
-      <subpackages>com.vinot.somativa1</subpackages>
-      <additionalJOption>-private</additionalJOption>
-    </configuration>
-  </plugin>
-</plugins>
+---
+
+## 🔁 Fluxo de Trabalho Git
+
+```bash
+git clone https://github.com/vbarbosa/PUCPR-OED.git
+cd PUCPR-OED
+
+git checkout -b develop     # cria develop (se necessário)
+git checkout -b feature/nova-feature
+# fazer mudanças
+
+git add .
+git commit -m "feat: nova feature"
+git push -u origin feature/nova-feature
+```
+
+Após isso:
+1. Acesse o GitHub
+2. Crie um Pull Request para `develop`
+
+### Merge para Produção
+```bash
+git checkout main
+git merge develop
+git push
+```
+
+### Corrigir bug urgente
+```bash
+git checkout main
+git checkout -b hotfix/bug
+# corrigir
+
+git commit -am "fix: bug"
+git checkout main
+git merge hotfix/bug
+git push
 ```
 
 ---
 
-## ✨ Recursos Utilizados
+## 🤖 GitHub Actions - CI/CD
 
-- **Jackson**: manipulação de JSON
-- **JUnit 5**: testes automatizados
-- **JaCoCo**: cobertura de testes
-- **JavaDoc**: documentação automatizada
-- **Maven**: gerenciamento de dependências, build e plugins
+`.github/workflows/build.yml`
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '23'
+
+    - name: Build com Maven
+      run: mvn clean verify
+```
 
 ---
 
-## 📞 Suporte
-Vinícius Barbosa
+## 🗂️ Arquivos Adicionais
 
-> Projeto acadêmico - 
+### `.gitignore`
+```gitignore
+target/
+.idea/
+*.class
+*.log
+*.iml
+*.jar
+*.exec
+.DS_Store
+```
+
+### `CONTRIBUTING.md`
+```markdown
+# Como Contribuir
+1. Fork
+2. Branch `feature/*`
+3. Commits pequenos e claros
+4. Pull Request para `develop`
+5. Aguardar revisão
+```
+
+---
+
+## ✅ Checklist de Commits
+- [ ] Compila e passa os testes
+- [ ] Testes automatizados se necessário
+- [ ] Sem arquivos de build no commit (`target/`, `.class`, etc)
+- [ ] Inclui documentação (se aplicável)
+
+---
+
+## 📞 Contato
+Vinícius Barbosa
+> Projeto acadêmico da PUCPR - 2025
 

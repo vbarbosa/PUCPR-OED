@@ -1,0 +1,9 @@
+# Ignorar arquivos de build e IDE
+target/
+*.class
+*.log
+.idea/
+*.iml
+.DS_Store
+*.jar
+*.exec
