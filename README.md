@@ -1,3 +1,8 @@
+# 📚 Projeto Somativa1 - Biblioteca Virtual - PUCPR
+
+![Build](https://github.com/vbarbosa/PUCPR-OED/actions/workflows/maven.yml/badge.svg)
+![Cobertura de Testes](https://img.shields.io/badge/cobertura-68%25-yellowgreen)
+
 # Somativa1 - Sistema de Gerenciamento de Biblioteca Virtual
 
 Projeto Java completo com suporte a:
