@@ -9,7 +9,8 @@ Projeto Java completo com suporte a:
 - Testes automatizados com JUnit 5;
 - Geração de documentação JavaDoc;
 - Relatório de cobertura de testes com JaCoCo;
-- Estrutura Maven profissional.
+- Estrutura Maven profissional;
+- Esteira de desenvolvimento com Git e GitHub Actions.
 
 ---
 
@@ -40,6 +41,11 @@ Somativa1/
 │   └── test/
 │       ├── java/com/vinot/somativa1/ # Testes automatizados
 │       └── resources/           # JSONs de teste
+├── .github/
+│   └── workflows/build.yml      # CI automático com Maven
+├── .gitignore
+├── CONTRIBUTING.md
+├── LICENSE
 ```
 
 ---
@@ -126,41 +132,52 @@ target/Somativa1-1.0-SNAPSHOT-javadoc.jar
 
 ## 🔁 Fluxo de Trabalho Git
 
+### 🚧 Desenvolvimento de funcionalidades
 ```bash
-git clone https://github.com/vbarbosa/PUCPR-OED.git
-cd PUCPR-OED
-
-git checkout -b develop     # cria develop (se necessário)
-git checkout -b feature/nova-feature
-# fazer mudanças
-
+git checkout develop
+git checkout -b feature/nome-da-feature
+# alterações...
 git add .
-git commit -m "feat: nova feature"
-git push -u origin feature/nova-feature
+git commit -m "feat: descrição da feature"
+git push -u origin feature/nome-da-feature
 ```
+Depois, abrir Pull Request para `develop`.
 
-Após isso:
-1. Acesse o GitHub
-2. Crie um Pull Request para `develop`
-
-### Merge para Produção
+### 🔄 Atualizar main (produção)
 ```bash
 git checkout main
 git merge develop
 git push
 ```
 
-### Corrigir bug urgente
+### 🔥 Corrigir bug crítico
 ```bash
 git checkout main
-git checkout -b hotfix/bug
+git checkout -b hotfix/nome-do-bug
 # corrigir
 
-git commit -am "fix: bug"
+git commit -am "fix: bug crítico"
 git checkout main
-git merge hotfix/bug
+git merge hotfix/nome-do-bug
 git push
 ```
+
+---
+
+## 📦 Criar uma Release e Tag
+
+### Passos para criar release com changelog
+1. Atualize `pom.xml` com nova versão, ex: `1.0.0`
+2. Faça commit: `git commit -am "chore: release 1.0.0"`
+3. Gere a tag:
+```bash
+git tag -a v1.0.0 -m "Versão 1.0.0 estável"
+git push origin v1.0.0
+```
+4. Vá no GitHub > Releases > Draft new release > selecione a tag `v1.0.0`
+5. Escreva um changelog (resumo das mudanças)
+6. Anexe arquivos (`.jar`, `.javadoc.jar`, etc) se desejar
+7. Publicar release
 
 ---
 
@@ -191,6 +208,9 @@ jobs:
       run: mvn clean verify
 ```
 
+- Toda `push` em `main` ou `develop` dispara build e testes
+- Toda PR para `develop` também roda CI
+
 ---
 
 ## 🗂️ Arquivos Adicionais
@@ -215,6 +235,19 @@ target/
 3. Commits pequenos e claros
 4. Pull Request para `develop`
 5. Aguardar revisão
+```
+
+### `LICENSE`
+Licença MIT (padrão de projetos open-source acadêmicos)
+```txt
+MIT License
+
+Copyright (c) 2025 Vinícius Barbosa
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+... (continua)
 ```
 
 ---
