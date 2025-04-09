@@ -1,4 +1,3 @@
-# .github/workflows/test.yml
 name: Run Tests + Coverage
 
 on:
@@ -23,7 +22,6 @@ jobs:
           distribution: 'temurin'
 
       - name: Build and test with Maven
-        run: mvn clean verify
         run: mvn clean verify
 
       - name: Upload coverage report
