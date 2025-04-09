@@ -97,7 +97,7 @@ public class Library {
     /**
      * Adiciona um novo usuário.
      *
-     * @param name nome
+     * @param name  nome
      * @param email e-mail
      * @param userId identificador único
      */
@@ -140,6 +140,49 @@ public class Library {
         System.out.println("\n--- Inventário ---");
         inventory.values().forEach(System.out::println);
     }
+
+    // =====================================
+    // Métodos para manipulação do grafo de recomendações
+    // =====================================
+
+    /**
+     * Adiciona uma recomendação entre dois livros.
+     * Cada livro adicionado ao grafo terá um conjunto de livros recomendados.
+     *
+     * @param book        o livro base
+     * @param recomendacao o livro recomendado para o livro base
+     */
+    public void addRecommendation(Book book, Book recomendacao) {
+        // Garantir que ambos os livros estejam no grafo
+        recommendationGraph.putIfAbsent(book, new HashSet<>());
+        recommendationGraph.putIfAbsent(recomendacao, new HashSet<>());
+        // Adiciona a recomendação
+        recommendationGraph.get(book).add(recomendacao);
+    }
+
+    /**
+     * Obtém as recomendações para o livro informado.
+     *
+     * @param book o livro base
+     * @return conjunto de livros recomendados ou um conjunto vazio
+     */
+    public Set<Book> getRecommendations(Book book) {
+        return recommendationGraph.getOrDefault(book, Collections.emptySet());
+    }
+
+    /**
+     * Exibe o grafo de recomendações, listando cada livro e seus recomendados.
+     */
+    public void displayRecommendationGraph() {
+        System.out.println("\n--- Grafo de Recomendações ---");
+        for (Map.Entry<Book, Set<Book>> entry : recommendationGraph.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+
+    // =====================================
+    // Acesso aos gerenciadores existentes
+    // =====================================
 
     /**
      * Acesso ao gerenciador de fila de espera.
