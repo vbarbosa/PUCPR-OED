@@ -3,15 +3,15 @@
   "author" : "George Orwell",
   "year" : 1949,
   "bookHash" : -1712237618,
-  "physicalCopyHashes" : [ -621684604 ],
-  "digitalCopyHashes" : [ -621666720 ],
+  "physicalCopyHashes" : [ 940631133 ],
+  "digitalCopyHashes" : [ 940632361 ],
   "recommendations" : [ ]
 }, {
   "title" : "O Senhor dos Anéis",
   "author" : "Tolkien",
   "year" : 0,
   "bookHash" : -277978219,
-  "physicalCopyHashes" : [ 890703301 ],
+  "physicalCopyHashes" : [ -1841939026 ],
   "digitalCopyHashes" : [ ],
   "recommendations" : [ ]
 }, {
@@ -20,7 +20,7 @@
   "year" : 1899,
   "bookHash" : 401410465,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ 476915781 ],
+  "digitalCopyHashes" : [ 2039241138 ],
   "recommendations" : [ ]
 }, {
   "title" : "Cem Anos de Solidão",
@@ -35,7 +35,7 @@
   "author" : "Antoine de Saint-Exupéry",
   "year" : 1943,
   "bookHash" : -1711859271,
-  "physicalCopyHashes" : [ -609936907, -609936931 ],
+  "physicalCopyHashes" : [ 952388422, 952387542 ],
   "digitalCopyHashes" : [ ],
   "recommendations" : [ ]
 }, {
@@ -51,8 +51,8 @@
   "author" : "Fiódor Dostoiévski",
   "year" : 0,
   "bookHash" : 1683838835,
-  "physicalCopyHashes" : [ 1577486703 ],
-  "digitalCopyHashes" : [ 1577486647 ],
+  "physicalCopyHashes" : [ -1155153400 ],
+  "digitalCopyHashes" : [ -1155153740 ],
   "recommendations" : [ ]
 }, {
   "title" : "O Hobbit",
@@ -75,7 +75,7 @@
   "author" : "Herman Melville",
   "year" : 1851,
   "bookHash" : -791350763,
-  "physicalCopyHashes" : [ -2138947295 ],
+  "physicalCopyHashes" : [ -576620830 ],
   "digitalCopyHashes" : [ ],
   "recommendations" : [ ]
 }, {
