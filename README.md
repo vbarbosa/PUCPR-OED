@@ -9,30 +9,18 @@ Projeto Java completo com suporte a:
 - Testes automatizados com JUnit 5;
 - Geração de documentação JavaDoc;
 - Relatório de cobertura de testes com JaCoCo;
-- Estrutura Maven profissional;
-- ✅ **Implementação de fila e pilha como parte da atividade formativa da PUCPR.**
+- Estrutura Maven profissional.
 
 ---
 
-## 📌 Atividade Formativa - PUCPR
-
-Nesta etapa do projeto, foram integradas novas funcionalidades com foco no uso de **estruturas de dados**:
-
-- 📚 **Fila (`Queue`)**: gerenciamento da lista de espera de livros emprestados.
-- 🧠 **Pilha (`Stack`)**: histórico de navegação dos livros visualizados por cada usuário.
-- Menu interativo com opções para adicionar à fila, consultar e visualizar histórico.
-- Mantida a estrutura com `LinkedList<Book>` como base do acervo.
-
----
-
-## 🧩 Fluxo de Desenvolvimento - Projeto PUCPR-OED
+# 🧩 Fluxo de Desenvolvimento - Projeto PUCPR-OED
 
 Este documento descreve o processo completo de versionamento, colaboração e esteira de CI/CD com Git e GitHub para o projeto Java **Somativa1 - Sistema de Gerenciamento de Biblioteca Virtual**.
 
 ---
 
 ## 📚 Contexto Acadêmico
-Projeto desenvolvido como atividade somativa na disciplina de **Programação Orientada a Objetos** da **PUCPR**, com foco em boas práticas de desenvolvimento, testes e documentação.
+Projeto desenvolvido como atividade formativa e somativa na disciplina de **Programação Orientada a Objetos** da **PUCPR**, com foco em boas práticas de desenvolvimento, testes e documentação.
 
 ---
 
@@ -45,7 +33,7 @@ Somativa1/
 │   ├── main/
 │   │   ├── java/com/vinot/somativa1/
 │   │   │   ├── application/     # Classe Main
-│   │   │   ├── controller/      # Biblioteca, fila e histórico
+│   │   │   ├── controller/      # Biblioteca, Fila, Histórico
 │   │   │   ├── manager/         # Persistência JSON
 │   │   │   └── model/           # Book, User, InventoryItem
 │   │   └── resources/           # books.json, users.json
@@ -93,6 +81,14 @@ mvn verify
   ```
   target/site/jacoco/index.html
   ```
+
+---
+
+## 📘 Documentação JavaDoc
+
+[📘 Ver Documentação JavaDoc (online)](https://vbarbosa.github.io/PUCPR-OED/)
+
+Se preferir, você também pode baixar a documentação em `.jar` ou `.zip` no [GitHub Releases](https://github.com/vbarbosa/PUCPR-OED/releases).
 
 ---
 
@@ -220,18 +216,25 @@ target/
 ```
 
 ### `CONTRIBUTING.md`
-Ver instruções completas no arquivo [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+```markdown
+# Como Contribuir
+1. Fork
+2. Branch `feature/*`
+3. Commits pequenos e claros
+4. Pull Request para `develop`
+5. Aguardar revisão
+```
 
 ---
 
 ## ✅ Checklist de Commits
-- [ ] Código compila e passa os testes
-- [ ] Testes automatizados cobrindo a funcionalidade
+- [ ] Compila e passa os testes
+- [ ] Testes automatizados se necessário
 - [ ] Sem arquivos de build no commit (`target/`, `.class`, etc)
-- [ ] Inclui documentação (README, JavaDoc, etc)
+- [ ] Inclui documentação (se aplicável)
 
 ---
 
 ## 📞 Contato
-Vinícius Barbosa
+Vinícius Barbosa  
 > Projeto acadêmico da PUCPR - 2025
