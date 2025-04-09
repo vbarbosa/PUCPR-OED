@@ -80,7 +80,14 @@
     <!-- Seção de build com plugins -->
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.vinot.somativa1.demo.RecommendationDemo</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.4.0</version>

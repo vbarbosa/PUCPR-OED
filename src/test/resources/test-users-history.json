@@ -9,9 +9,9 @@
     "email" : "teste2@email.com",
     "userId" : "teste2"
   },
-  "hist1" : {
-    "name" : "Hist User",
+  "histUser" : {
+    "name" : "HistUser",
     "email" : "hist@teste.com",
-    "userId" : "hist1"
+    "userId" : "histUser"
   }
 }
