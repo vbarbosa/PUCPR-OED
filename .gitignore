@@ -1,10 +1,38 @@
-# Ignorar arquivos de build e IDE
+# === JAVA/MAVEN BUILD ===
 target/
 *.class
 *.log
+
+# === IDE INTELLIJ IDEA ===
 .idea/
 *.iml
+*.ipr
+*.iws
+out/
+
+# === SISTEMAS OPERACIONAIS ===
 .DS_Store
-*.jar
-*.exec
-.idea/
+Thumbs.db
+
+# === LOGS E TEMPORAÁRIOS ===
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# === GITHUB ACTIONS ===
+/jacoco.exec
+/coverage-report/
+*.xml
+
+# === ARQUIVOS DE TESTE GERADOS ===
+src/test/resources/*.json
+!src/test/resources/test-*.json # mantém arquivos modelo, se quiser
+
+# === CONFIGS DE AMBIENTE OPCIONAIS ===
+.env
+*.env
+*.local
+
+# === JAVA DOC GERADA ===
+target/site/apidocs/
