@@ -152,6 +152,11 @@ public class Main {
             // NOVAS FUNCIONALIDADES DO GRAFO:
             System.out.println("19. Exibir recomendações para um livro");
             System.out.println("20. Adicionar recomendação entre dois livros");
+            System.out.println("21. Mapa de distâncias (Dijkstra) a partir de um livro");
+            System.out.println("22. Traçar Dijkstra passo a passo");
+            System.out.println("23. Mostrar grafo completo");
+
+
 
             System.out.println("0. Fechar Biblioteca");
             System.out.print("Opção: ");
@@ -394,6 +399,30 @@ public class Main {
                         LibraryFileManager.saveBooks(livros, library);
                         System.out.println("Recomendação adicionada.");
                     }
+                }
+                case 21 -> {
+                    System.out.print("Título do livro de origem: ");
+                    String title = scanner.nextLine();
+                    List<Book> encontrados = library.searchBookByTitle(title);
+                    if (encontrados.isEmpty()) {
+                        System.out.println("Livro não encontrado.");
+                    } else {
+                        Book origem = encontrados.get(0);
+                        library.displayDistances(origem);
+                    }
+                }
+                case 22 -> {
+                    System.out.print("Livro de origem: ");
+                    String title = scanner.nextLine();
+                    List<Book> encontrados = library.searchBookByTitle(title);
+                    if (encontrados.isEmpty()) {
+                        System.out.println("Livro não encontrado.");
+                    } else {
+                        library.displayDistancesVerbose(encontrados.get(0));
+                    }
+                }
+                case 23 -> {
+                        library.displayRecommendationGraph();
                 }
                 case 0 -> {
                     LibraryFileManager.saveBooks(livros, library);

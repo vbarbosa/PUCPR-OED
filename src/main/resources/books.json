@@ -3,15 +3,15 @@
   "author" : "George Orwell",
   "year" : 1949,
   "bookHash" : -1712237618,
-  "physicalCopyHashes" : [ -543329742 ],
-  "digitalCopyHashes" : [ -543314114 ],
-  "recommendations" : [ ]
+  "physicalCopyHashes" : [ -601548610 ],
+  "digitalCopyHashes" : [ -601536270 ],
+  "recommendations" : [ -109771201, 1219580655 ]
 }, {
   "title" : "O Senhor dos Anéis",
   "author" : "Tolkien",
   "year" : 0,
   "bookHash" : -277978219,
-  "physicalCopyHashes" : [ 969065195 ],
+  "physicalCopyHashes" : [ 910845951 ],
   "digitalCopyHashes" : [ ],
   "recommendations" : [ ]
 }, {
@@ -20,7 +20,7 @@
   "year" : 1899,
   "bookHash" : 401410465,
   "physicalCopyHashes" : [ ],
-  "digitalCopyHashes" : [ 555278639 ],
+  "digitalCopyHashes" : [ 497056547 ],
   "recommendations" : [ ]
 }, {
   "title" : "Cem Anos de Solidão",
@@ -35,7 +35,7 @@
   "author" : "Antoine de Saint-Exupéry",
   "year" : 1943,
   "bookHash" : -1711859271,
-  "physicalCopyHashes" : [ -531572753, -531571853 ],
+  "physicalCopyHashes" : [ -589797529, -589796953 ],
   "digitalCopyHashes" : [ ],
   "recommendations" : [ ]
 }, {
@@ -45,14 +45,14 @@
   "bookHash" : 1219580655,
   "physicalCopyHashes" : [ ],
   "digitalCopyHashes" : [ ],
-  "recommendations" : [ ]
+  "recommendations" : [ -1712237618 ]
 }, {
   "title" : "Crime e Castigo",
   "author" : "Fiódor Dostoiévski",
   "year" : 0,
   "bookHash" : 1683838835,
-  "physicalCopyHashes" : [ 1655847449 ],
-  "digitalCopyHashes" : [ 1655846797 ],
+  "physicalCopyHashes" : [ 1597627829 ],
+  "digitalCopyHashes" : [ 1597642385 ],
   "recommendations" : [ ]
 }, {
   "title" : "O Hobbit",
@@ -61,7 +61,7 @@
   "bookHash" : -109771201,
   "physicalCopyHashes" : [ ],
   "digitalCopyHashes" : [ ],
-  "recommendations" : [ ]
+  "recommendations" : [ -791350763 ]
 }, {
   "title" : "O Apanhador no Campo de Centeio",
   "author" : "J.D. Salinger",
@@ -75,7 +75,7 @@
   "author" : "Herman Melville",
   "year" : 1851,
   "bookHash" : -791350763,
-  "physicalCopyHashes" : [ -2060585809 ],
+  "physicalCopyHashes" : [ -2118794969 ],
   "digitalCopyHashes" : [ ],
-  "recommendations" : [ ]
+  "recommendations" : [ -1712237618 ]
 } ]
